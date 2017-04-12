@@ -1,4 +1,4 @@
-ximport sys
+import sys
 import re
 
 file_name = sys.argv[1]
