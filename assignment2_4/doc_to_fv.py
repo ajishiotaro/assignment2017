@@ -16,14 +16,15 @@ for sent in sent_tokenize_list:
 count = OrderedDict()
 index = shelve.open("freq_to_index_shelve.db")
 try:
-    countOfIndex = 1
+    countOfIndex = len(index) + 1 
     for i in word_tokenize_list:
         if i in count:
             count[i] += 1
         else:
             count[i] = 1
-            index[i] = countOfIndex
-            countOfIndex += 1
+            if not i in index:
+                index[i] = countOfIndex
+                countOfIndex += 1
 
     feature_vector = [0] * len(index)
 
